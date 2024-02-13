@@ -5,5 +5,6 @@
 body {
     font-family: 'Montserrat Variable', sans-serif;
   }
-
-  
+:root{
+  --cursor-color:rgb(255, 255, 255)
+}

@@ -5,6 +5,7 @@ import BaseLayout from "../layout/BaseLayout";
 import About from "../screens/About";
 import Transition from "../wrappers/Transition";
 import Navbar from "../components/Navbar";
+import Contact from "../screens/Contact";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,16 @@ const router = createBrowserRouter([
           <Transition key={'about'} item='about'>
             <Navbar />
             <About />
+
+          </Transition>
+
+      },
+      {
+        path: "/contact",
+        element:
+          <Transition key={'contact'} item='contact'>
+            <Navbar />
+            <Contact />
 
           </Transition>
 

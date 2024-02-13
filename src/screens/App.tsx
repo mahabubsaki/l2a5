@@ -5,9 +5,11 @@ import bg from "../assets/bg.svg";
 const App = () => {
 
   return (
-    <div className="min-h-[100dvh] bg-no-repeat bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }} >
+    <div className="min-h-[100dvh] bg-no-repeat pb-12 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }} >
       <Navbar />
-      <HeroSection />
+      <div className="mt-6">
+        <HeroSection />
+      </div>
     </div>
   );
 };

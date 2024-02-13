@@ -73,7 +73,7 @@ const MagneticLink = ({ children, pathname, path, hovered, setHovered, direction
                 'bottom-1': direction === 'bottom',
                 '-left-3': direction === 'left',
                 'bg-black': dark,
-                'bg-stone-500': !dark,
+                'bg-white': !dark,
             })} style={{ scale: 0 }} />
 
             <AnimatePresence mode='wait'>
@@ -85,7 +85,7 @@ const MagneticLink = ({ children, pathname, path, hovered, setHovered, direction
                     'bottom-1': direction === 'bottom',
                     '-left-3': direction === 'left',
                     'bg-black': dark,
-                    'bg-stone-500': !dark,
+                    'bg-white': !dark,
                 })} />
                     : null}
             </AnimatePresence>

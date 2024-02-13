@@ -1,6 +1,6 @@
 import { motion, useAnimate } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
-import useToggleSideBar, { NavState } from "../store/useToggleSideBar";
+import useToggleSideBar from "../store/useToggleSideBar";
 
 const Transition = ({ children, item }: { children: ReactNode; item: string; }) => {
     const { setClose, setOpen } = useToggleSideBar();

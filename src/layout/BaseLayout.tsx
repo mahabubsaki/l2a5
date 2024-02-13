@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import gsap from 'gsap';
@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
 import useToggleSideBar from '../store/useToggleSideBar';
 import classNames from 'classnames';
+import AnimatedCursor from 'react-animated-cursor';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -45,15 +46,19 @@ const BaseLayout = () => {
 
 
 
-        ScrollTrigger.addEventListener('refresh', () => scroll.update());
+        ScrollTrigger.addEventListener('refresh', () => {
+            if (scroll) scroll.update();
+        });
 
 
         ScrollTrigger.refresh();
 
         return () => {
-            scroll.destroy();
+            if (scroll) scroll.destroy();
             ScrollTrigger.getAll().forEach(st => st.kill());
-            ScrollTrigger.removeEventListener('refresh', () => scroll.update());
+            ScrollTrigger.removeEventListener('refresh', () => {
+                if (scroll) scroll.update();
+            });
             ScrollTrigger.clearMatchMedia();
 
         };
@@ -63,15 +68,47 @@ const BaseLayout = () => {
     const { open: navOpen, sideBar } = useToggleSideBar();
     useEffect(() => {
         scrollRef?.update();
+        if (navOpen || sideBar) {
+            document.documentElement.style.setProperty('--cursor-color', 'rgb(255,255,255)');
+
+        } else {
+            document.documentElement.style.setProperty('--cursor-color', 'rgb(0,0,0)');
+        }
     }, [navOpen, sideBar]);
-    console.log({ navOpen, sideBar });
+
 
     return (
 
+        <Fragment>
+            <main id='container' className={classNames('', { 'h-[100dvh]': (navOpen || sideBar), 'h-[1000dvh]': (!navOpen || !sideBar) })}>
 
-        <main id='container' className={classNames('', { 'h-[100dvh]': (navOpen || sideBar), 'h-[1000dvh]': (!navOpen || !sideBar) })}>
-            <Outlet />
-        </main>
+                <Outlet />
+            </main>
+            <AnimatedCursor
+                innerSize={8}
+                outerSize={35}
+
+                innerScale={1}
+                outerScale={2}
+                outerAlpha={0}
+                clickables={['a',
+                    'input[type="text"]',
+                    'input[type="email"]',
+                    'input[type="number"]',
+                    'input[type="submit"]',
+                    'input[type="image"]',
+                    'label[for]',
+                    'select',
+                    'textarea',
+                    'button',
+                    '.link']}
+                innerStyle={{
+                    backgroundColor: 'var(--cursor-color)',
+                }}
+                outerStyle={{
+                    border: `3px solid var(--cursor-color)`
+                }} />
+        </Fragment>
 
 
     );
