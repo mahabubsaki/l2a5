@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Magnetic from '../anim/Magnetic';
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import MagneticLink from '../anim/MagneticLink';
+import { AnimatePresence, motion } from 'framer-motion';
+import MagneticGhostBtn from '../anim/MagneticGhostBtn';
+import { useMediaQuery } from '@uidotdev/usehooks';
+import classNames from 'classnames';
+import useToggleSideBar from '../store/useToggleSideBar';
 
+import SideBar from './SideBar';
+
+const nav = [{ name: 'Home', path: '/' },
+{ name: 'About', path: '/about' },
+{ name: 'Contact', path: '/contact' },];
 
 const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
+    ...nav
 
 ] as const;
 export type NavPath = typeof navItems[number]['path'] | null;
@@ -14,25 +22,57 @@ export type NavPath = typeof navItems[number]['path'] | null;
 const Navbar = () => {
     const { pathname } = useLocation();
     const [hovered, setHovered] = useState<NavPath>(null);
-    const navigate = useNavigate();
+    const isSmallDevice = useMediaQuery("(max-width: 768px)");
+    const { sideBar, setSideClose, setSideOpen } = useToggleSideBar();
+
+
+    useEffect(() => {
+        if (!isSmallDevice) {
+            setSideClose();
+        }
+    }, [isSmallDevice]);
+
+
     return (
-        <nav className='px-20 py-6 flex justify-between items-center'>
+        <nav className={classNames('px-20 py-6 flex justify-between items-center', { 'px-20': !isSmallDevice, 'px-5': isSmallDevice })}>
 
             <div>
-                <p className='text-3xl font-bold'>EVENT <span className='text-[#3461FF]'>360</span></p>
+                <p className='text-2xl sm:text-3xl font-bold'>EVENT <span className='text-[#3461FF]'>360</span></p>
             </div>
-            <ul className='flex gap-8 items-center'>
-                {navItems.map((item, index) => (
-                    <Magnetic pathname={pathname} path={item.path} hovered={hovered} setHovered={setHovered}>
-                        <li onClick={() => navigate(item.path)} key={index} className='font-medium cursor-pointer select-none py-3 px-2'>
+            <AnimatePresence mode='wait'>
+                {!isSmallDevice ? <motion.ul initial={{ scale: 0, opacity: 0, width: '0px' }} animate={{ scale: 1, opacity: 1, width: 'fit-content' }} exit={{ scale: 0, opacity: 0, width: '0px' }} className='flex gap-8 items-center'>
+                    {navItems.map((item, index) => (
+                        <Link to={item.path} key={item.name}>
+                            <MagneticLink dark direction={'bottom'} pathname={pathname} path={item.path} hovered={hovered} setHovered={setHovered}>
+                                <li key={index} className='font-medium cursor-pointer select-none py-3 px-2'>
 
-                            {item.name}
+                                    {item.name}
 
-                        </li>
-                    </Magnetic>
-                ))}
-            </ul>
+                                </li>
+                            </MagneticLink></Link>
+                    ))}
+                </motion.ul> : null}
 
+            </AnimatePresence>
+            <AnimatePresence mode='wait'>
+                {
+                    (isSmallDevice) ? <motion.ul initial={{ scale: 0, opacity: 0, width: '0px' }} animate={{ scale: 1, opacity: 1, width: 'fit-content' }} exit={{ scale: 0, opacity: 0, width: '0px' }}>
+                        <button onClick={() => setSideOpen()}>
+                            <MagneticGhostBtn direction='left'>
+                                <li className='font-medium cursor-pointer select-none py-2  px-3'>
+
+                                    Menu
+
+                                </li>
+                            </MagneticGhostBtn>
+                        </button>
+                    </motion.ul> : null
+                }
+            </AnimatePresence>
+            <AnimatePresence mode='wait'>
+                {(isSmallDevice && sideBar) ? <SideBar hovered={hovered} navItems={nav} pathname={pathname} setHovered={setHovered} /> : null}
+
+            </AnimatePresence>
         </nav>
     );
 };

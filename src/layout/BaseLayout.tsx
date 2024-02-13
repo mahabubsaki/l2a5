@@ -1,20 +1,28 @@
-import React, { Fragment, useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import Navbar from '../components/Navbar';
+
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LocomotiveScroll from 'locomotive-scroll';
+import useToggleSideBar from '../store/useToggleSideBar';
+import classNames from 'classnames';
 
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 const BaseLayout = () => {
+    const [scrollRef, setScrollRef] = useState<LocomotiveScroll | null>(null);
     useLayoutEffect(() => {
-        const scroll = new LocomotiveScroll({ smooth: true, el: (document.querySelector('#container') as HTMLElement) });
+        const scroll = new LocomotiveScroll({
+            smooth: true, el: (document.querySelector('#container') as HTMLElement),
+            tablet: {
+                breakpoint: 0
+            }
+        });
 
 
-
+        setScrollRef(scroll);
 
 
         window.onresize = scroll.update();
@@ -52,10 +60,16 @@ const BaseLayout = () => {
 
     }
         , []);
+    const { open: navOpen, sideBar } = useToggleSideBar();
+    useEffect(() => {
+        scrollRef?.update();
+    }, [navOpen, sideBar]);
+    console.log({ navOpen, sideBar });
+
     return (
 
 
-        <main id='container' className='h-[1000vh]'>
+        <main id='container' className={classNames('', { 'h-[100dvh]': (navOpen || sideBar), 'h-[1000dvh]': (!navOpen || !sideBar) })}>
             <Outlet />
         </main>
 

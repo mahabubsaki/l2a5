@@ -1,8 +1,9 @@
 import { motion, useAnimate } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
+import useToggleSideBar, { NavState } from "../store/useToggleSideBar";
 
 const Transition = ({ children, item }: { children: ReactNode; item: string; }) => {
-
+    const { setClose, setOpen } = useToggleSideBar();
 
 
     const [scope, animate] = useAnimate();
@@ -15,17 +16,18 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
     useEffect(() => {
         // animate('#slide-in', { y: '0%', duration: 0.5, ease: 'easeInOut' });
         async function sequenceAnimation() {
-
+            setOpen();
             await animate(slideOutRef.current!, { x: '0%' }, { duration: 0 });
             await animate(slideOutRef.current!, { y: '0%' }, { duration: 1, ease: 'easeInOut' });
             await animate(titleRef.current!, { y: '0px', opacity: 1 }, { duration: 1, ease: 'easeInOut' });
             await Promise.all([
                 animate(slideOutRef.current!, { y: '-100%' }, { duration: 2, ease: 'easeInOut' }),
                 animate(rootRef.current!, { y: '0%', opacity: 1 }, { duration: 3, ease: 'easeInOut' }),
-                await animate('#border'!, { width: 'fit-content' }, { duration: 0.5, ease: 'easeInOut' })]);
+                animate('#border'!, { width: 'fit-content' }, { duration: 0.5, ease: 'easeInOut' })]);
 
             await animate(slideOutRef.current!, { y: '100%', x: '100%' }, { duration: 0, ease: 'easeInOut' });
-
+            setClose();
+            window.dispatchEvent(new Event('resize'));
 
 
             // await animate(slideOutRef.current, { y: '-100%', duration: 1.5, ease: 'easeInOut' });

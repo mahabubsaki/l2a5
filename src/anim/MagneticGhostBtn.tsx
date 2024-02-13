@@ -1,14 +1,13 @@
 import classNames from 'classnames';
 import gsap from 'gsap';
-import { Dispatch, ReactNode, SetStateAction, cloneElement, useEffect, useRef } from 'react';
-import { NavPath } from '../components/Navbar';
+import { ReactNode, cloneElement, useEffect, useRef } from 'react';
 
 
-const Magnetic = ({ children, pathname, path, hovered, setHovered }: { children: ReactNode; pathname: string; path: string; hovered: NavPath; setHovered: Dispatch<SetStateAction<NavPath>>; }) => {
+const MagneticGhostBtn = ({ children, direction, blue = false }: { children: ReactNode; direction: 'bottom' | 'left'; blue?: boolean; }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const spanRef = useRef<HTMLSpanElement | null>(null);
 
-    const active = path === pathname;
+
 
 
 
@@ -40,7 +39,7 @@ const Magnetic = ({ children, pathname, path, hovered, setHovered }: { children:
             gsap.to(item, { x: 0, y: 0 });
 
             if (spanItem) {
-                gsap.to(spanItem, { x: 0, y: 0, scale: 0 });
+                gsap.to(spanItem, { x: 0, y: 0 });
             }
         };
 
@@ -58,20 +57,26 @@ const Magnetic = ({ children, pathname, path, hovered, setHovered }: { children:
         };
     }, []);
 
-    console.log({ active, hovered });
 
     return (
-        <div className='relative' onMouseEnter={() => setHovered(path as NavPath)} onMouseLeave={() => setHovered(() => {
-            return null;
-        })}>
+        <div className='relative'>
             {cloneElement(children as React.ReactElement, { ref })}
-            <span ref={spanRef} className={classNames('size-[5px] left-1/2 rounded-full bg-black absolute right-1/2 bottom-1')} style={{ scale: 0 }} />
+            <span ref={spanRef} className={classNames('size-[7px]  rounded-full  absolute', {
+                'left-1/2': direction === 'bottom',
+                'right-1/2': direction === 'bottom',
+                'top-[45%]': direction === 'left',
+                'bottom-[45%]': direction === 'left',
 
-            {(active && !hovered) ? <span className={classNames('size-[5px] left-1/2 rounded-full bg-black absolute right-1/2 bottom-1 duration-[5s]')} style={{ scale: (active && !hovered) ? 1 : 0 }} />
-                : null}
+                'bottom-1': direction === 'bottom',
+                '-left-1': direction === 'left',
+                'bg-blue-500': blue,
+                'bg-black': !blue
+            })} style={{ scale: 1 }} />
+
+
 
         </div>
     );
 };
 
-export default Magnetic;
+export default MagneticGhostBtn;
