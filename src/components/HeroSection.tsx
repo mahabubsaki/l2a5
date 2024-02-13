@@ -36,8 +36,8 @@ const Main = () => {
                     Explore
                 </Button>
             </div>
-            <div className='grid lg:grid-cols-3 gap-2 grid-cols-1 sm:grid-cols-2'>
-                <div className='rounded-[32px] px-4 py-6 border-2 border-white backdrop-blur-[2px] '>
+            <div className='flex flex-wrap gap-4'>
+                <div className='rounded-[32px] px-4 flex-1 basis-[300px] py-6 border-2 border-white backdrop-blur-[2px] '>
                     <button className='p-3 mb-8 rounded-full bg-[rgba(104,95,212,0.35)] inline-block'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_1_1676)">
@@ -54,7 +54,7 @@ const Main = () => {
                     <p>
                         Fundraising events are gatherings organized to raise money for a cause or organization. They typically involve activities such as auctions, dinners, or concerts, aiming to engage donors and supporters in contributing to the fundraising goal.</p>
                 </div>
-                <div className='rounded-[32px] px-4 py-6 border-2 border-white backdrop-blur-[2px] '>
+                <div className='rounded-[32px] px-4 py-6 flex-1 basis-[300px] border-2 border-white backdrop-blur-[2px] '>
                     <button className='p-3 mb-8 rounded-full bg-[rgba(242,201,76,0.35)] inline-block'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_1_1682)">
@@ -71,7 +71,7 @@ const Main = () => {
                     <p>
                         Sporting events are competitive gatherings where athletes or teams engage in various sports disciplines, showcasing their skills and talents. These events attract spectators and often promote teamwork, athleticism, and sportsmanship while providing entertainment.</p>
                 </div>
-                <div className='rounded-[32px] px-4 py-6 border-2 border-white backdrop-blur-[2px] '>
+                <div className='rounded-[32px] px-4 py-6 flex-1 basis-[300px] border-2 border-white backdrop-blur-[2px] '>
                     <button className=' p-3 mb-8 rounded-full bg-[rgba(138,178,220,0.35)] inline-block'>
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
