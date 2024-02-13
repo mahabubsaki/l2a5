@@ -6,7 +6,7 @@ import Button from '../anim/Button';
 
 const HeroSection = () => {
     return (
-        <div className='w-[90%] mx-auto items-center flex-col-reverse md:flex-row flex  gap-8 md:gap-0'>
+        <div className='w-[90%] mx-auto items-center flex-col-reverse lg:flex-row flex  gap-8 lg:gap-0'>
             <div className='flex-1'>
                 <Main />
             </div>
@@ -36,7 +36,7 @@ const Main = () => {
                     Explore
                 </Button>
             </div>
-            <div className='grid grid-cols-3 gap-2'>
+            <div className='grid lg:grid-cols-3 gap-2 grid-cols-1 sm:grid-cols-2'>
                 <div className='rounded-[32px] px-4 py-6 border-2 border-white backdrop-blur-[2px] '>
                     <button className='bg-red-500 p-3 mb-8 rounded-full bg-[rgba(104,95,212,0.35)] inline-block'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -144,12 +144,12 @@ const BannerImage = () => {
     });
 
     return (
-        <div ref={ref} className='border border-black rounded-full p-16 md:p-12 relative xl:p-16'>
+        <div ref={ref} className='border border-black rounded-full p-16 lg:p-12 relative xl:p-16'>
             <img className='w-full aspect-[0.7/1] max-w-[600px] rounded-full' src={heroImg} alt="" />
-            <motion.div initial={{ x: 0, y: 0 }} transition={{ duration: 10, repeatType: 'reverse', repeat: Infinity }} animate={{ x: firstX, y: firstY }} className='absolute hidden md:block bottom-[0vw] right-[11vw] md:bottom-[1vw]  md:right-[3vw]'>
+            <motion.div initial={{ x: 0, y: 0 }} transition={{ duration: 10, repeatType: 'reverse', repeat: Infinity }} animate={{ x: firstX, y: firstY }} className='absolute hidden lg:block bottom-[0vw] right-[11vw] lg:bottom-[1vw]  lg:right-[3vw]'>
                 <Shape1 />
             </motion.div>
-            <motion.div initial={{ x: 0, y: 0 }} transition={{ duration: 10, repeatType: 'reverse', repeat: Infinity }} animate={{ x: secondX, y: secondY }} className='absolute hidden md:block top-[0vw] left-[11vw] md:top-[1vw] md:left-[7.5vw] xl:left-[6.8vw] '>
+            <motion.div initial={{ x: 0, y: 0 }} transition={{ duration: 10, repeatType: 'reverse', repeat: Infinity }} animate={{ x: secondX, y: secondY }} className='absolute hidden lg:block top-[0vw] left-[11vw] lg:top-[1vw] lg:left-[7.5vw] xl:left-[6.8vw] '>
                 <Shape2 />
             </motion.div>
         </div>
@@ -159,7 +159,7 @@ const BannerImage = () => {
 const Shape1 = () => {
 
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" className='w-[15vw] md:w-[10vw] max-w-[130px]' viewBox="0 0 139 150" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" className='w-[15vw] lg:w-[10vw] max-w-[130px]' viewBox="0 0 139 150" fill="none">
             <path d="M67.6453 1.77796C67.9062 -0.592654 71.0938 -0.592654 71.3547 1.77796L73.5414 21.6653C76.365 47.3452 95.1268 67.5918 118.923 70.6388L137.352 72.9985C139.549 73.28 139.549 76.72 137.352 77.0015L118.923 79.3612C95.1268 82.4082 76.365 102.655 73.5414 128.335L71.3547 148.222C71.0938 150.593 67.9062 150.593 67.6453 148.222L65.4586 128.335C62.6351 102.655 43.8732 82.4082 20.0765 79.3612L1.64758 77.0015C-0.549193 76.72 -0.549193 73.28 1.64758 72.9985L20.0765 70.6388C43.8732 67.5918 62.6351 47.3452 65.4586 21.6653L67.6453 1.77796Z" fill="url(#paint0_linear_1_1669)" />
             <defs>
                 <linearGradient id="paint0_linear_1_1669" x1="128.416" y1="150" x2="-9.17316" y2="133.657" gradientUnits="userSpaceOnUse">
@@ -173,7 +173,7 @@ const Shape1 = () => {
 
 const Shape2 = () => {
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" className='w-[15vw] md:w-[5vw] max-w-[90px]' viewBox="0 0 98 96" fill="none">
+        <svg xmlns="http://www.w3.org/2000/svg" className='w-[15vw] lg:w-[5vw] max-w-[90px]' viewBox="0 0 98 96" fill="none">
             <path d="M49 0L57.2864 32.793L88.0916 18.8255L67.6195 45.7502L97.7464 61.126L63.9317 61.9076L70.6942 95.0484L49 69.0983L27.3058 95.0484L34.0683 61.9076L0.253605 61.126L30.3805 45.7502L9.90842 18.8255L40.7136 32.793L49 0Z" fill="url(#paint0_linear_1_1668)" />
             <defs>
                 <linearGradient id="paint0_linear_1_1668" x1="49" y1="0" x2="49" y2="100" gradientUnits="userSpaceOnUse">

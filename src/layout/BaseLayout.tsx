@@ -43,8 +43,18 @@ const BaseLayout = () => {
         ScrollTrigger.defaults({
             scroller: document.querySelector('#container'),
         });
+        const timeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#client',
+                scroller: '#container',
+                start: 'top center',
+                end: 'bottom center',
+            }
+        });
 
+        timeline.from('.my__heading', { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
 
+        timeline.from('.images', { y: 100, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
 
         ScrollTrigger.addEventListener('refresh', () => {
             if (scroll) scroll.update();
@@ -52,6 +62,8 @@ const BaseLayout = () => {
 
 
         ScrollTrigger.refresh();
+
+
 
         return () => {
             if (scroll) scroll.destroy();

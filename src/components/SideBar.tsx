@@ -11,7 +11,7 @@ import { Dispatch, SetStateAction } from 'react';
 const SideBar = ({ hovered, setHovered, pathname, navItems }: { hovered: NavPath; setHovered: Dispatch<SetStateAction<NavPath>>; pathname: string; navItems: { readonly name: string, readonly path: string; }[]; }) => {
     const { setSideClose } = useToggleSideBar();
     return (
-        <motion.div initial={{ x: '100%' }} animate={{ x: '0%' }} exit={{ x: '100%' }} transition={{ duration: 1.5, ease: 'easeInOut' }} className='absolute left-0 top-0 w-screen h-[100dvh] bg-black'>
+        <motion.div initial={{ x: '100%' }} animate={{ x: '0%' }} exit={{ x: '100%' }} transition={{ duration: 1.5, ease: 'easeInOut' }} className='absolute left-0 top-0 w-screen h-[100dvh] z-20 bg-black'>
 
             <div className='size-12 absolute flex justify-center items-center right-8 top-8 bg-transparent'>
                 <MagneticGhostBtn blue direction='bottom'>
