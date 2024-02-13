@@ -51,7 +51,7 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
                 <div className="w-full h-full  relative justify-center items-center text-white">
                     <motion.p ref={titleRef} initial={{ opacity: 0, y: '50px' }} className="absolute top-1/2  bottom-1/2 -translate-x-1/2 left-1/2 right-1/2 -translate-y-1/2 text-4xl font-bold uppercase" >
                         {item}
-                        <motion.span initial={{ width: '0px' }} id="border" className="h-[2.5px] mt-2 text-4xl text-transparent bg-white absolute left-0">
+                        <motion.span initial={{ width: '0px' }} id="border" className="h-[2.5px] mt-2 text-4xl text-transparent bg-white absolute left-0 top-10">
                             {item}
                         </motion.span>
                     </motion.p>

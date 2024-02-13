@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import bg from "../assets/bg.svg";
 import Client from "../components/Client";
 import { Fragment } from "react";
+import lowerbg from '../assets/bg.png';
+import Services from "../components/Services";
 
 const App = () => {
 
@@ -19,6 +21,9 @@ const App = () => {
       </div>
       <div className="mt-2">
         <Client />
+      </div>
+      <div className="min-h-[500px] bg-no-repeat bg-cover bg-center mb-20 pb-12" style={{ backgroundImage: `url(${lowerbg})` }}>
+        <Services />
       </div>
     </Fragment>
   );

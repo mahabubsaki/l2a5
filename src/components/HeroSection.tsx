@@ -38,7 +38,7 @@ const Main = () => {
             </div>
             <div className='grid lg:grid-cols-3 gap-2 grid-cols-1 sm:grid-cols-2'>
                 <div className='rounded-[32px] px-4 py-6 border-2 border-white backdrop-blur-[2px] '>
-                    <button className='bg-red-500 p-3 mb-8 rounded-full bg-[rgba(104,95,212,0.35)] inline-block'>
+                    <button className='p-3 mb-8 rounded-full bg-[rgba(104,95,212,0.35)] inline-block'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_1_1676)">
                                 <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#685FD4" />

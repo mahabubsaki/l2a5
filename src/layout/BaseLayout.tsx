@@ -30,6 +30,7 @@ const BaseLayout = () => {
 
         scroll.on("scroll", () => ScrollTrigger.update());
 
+
         ScrollTrigger.scrollerProxy('#container', {
             scrollTop(value) {
                 return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
@@ -56,6 +57,26 @@ const BaseLayout = () => {
 
         timeline.from('.images', { y: 100, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
 
+        const timelin2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#services',
+                scroller: '#container',
+                start: 'top center',
+                end: 'bottom center',
+            }
+        });
+        ['.my__heading2', '.service__description',].forEach((item) => {
+            timelin2.from(item, { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
+        });
+        const timelin3 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#service-card-container',
+                scroller: '#container',
+                start: 'top center',
+                end: 'bottom center',
+            }
+        });
+        timelin3.from('.service__card', { scale: 0, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
         ScrollTrigger.addEventListener('refresh', () => {
             if (scroll) scroll.update();
         });
@@ -92,7 +113,7 @@ const BaseLayout = () => {
     return (
 
         <Fragment>
-            <main id='container' className={classNames('', { 'h-[100dvh]': (navOpen || sideBar), 'h-[1000dvh]': (!navOpen || !sideBar) })}>
+            <main id='container' className={classNames('', { 'h-[100dvh]': (navOpen || sideBar), 'min-h-[100dvh]': (!navOpen || !sideBar) })}>
 
                 <Outlet />
             </main>
