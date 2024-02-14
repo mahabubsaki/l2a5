@@ -69,8 +69,8 @@ const Pricing = () => {
                     We keep affordability at the forefront of our services. Understanding the importance of budget-friendly solutions, we strive to provide high-quality event management services at competitive prices. Our transparent pricing structure ensures no hidden costs, allowing you to plan your event without any financial surprises. Choose us for cost-effective, yet exceptional event planning solutions.
                 </p>
             </div>
-            <div id='pricing-card-container' className='grid grid-cols-3 gap-5'>
-                {packages.map((pack) => <div key={pack.name} className={classNames('rounded-[20px] border  border-[#F5F6F7] overflow-hidden', pack.classNames)}>
+            <div id='pricing-card-container' className='grid px-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 xs gap-5'>
+                {packages.map((pack) => <div key={pack.name} className={classNames('rounded-[20px] border  border-[#F5F6F7] max-w-[500px] mx-auto overflow-hidden', pack.classNames)}>
                     <span style={{ backgroundColor: pack.baseColor }} className='h-1 block' />
                     <div className='p-8 pr-5'>
                         <div className='flex justify-between items-center mb-8'>

@@ -26,7 +26,10 @@ const BaseLayout = () => {
         setScrollRef(scroll);
 
 
-        window.onresize = scroll.update();
+        window.onresize = function () {
+            scroll.update();
+            scroll.scrollTo('#scroll-top');
+        };
 
         scroll.on("scroll", () => ScrollTrigger.update());
 
@@ -129,6 +132,19 @@ const BaseLayout = () => {
         timeline7.fromTo('.pricing_card_2', { ease: 'power4.out', opacity: 0 }, { opacity: 1 });
         timeline7.fromTo('.pricing_card_3', { x: '-104%', ease: 'power4.out', opacity: 0 }, { x: '0%', opacity: 1 });
 
+
+        const timeline8 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#testimonial',
+                scroller: '#container',
+                start: 'top 70%',
+                end: 'top 70%',
+            }
+        });
+
+
+        timeline8.fromTo('.my__heading5', { y: 100, opacity: 0, duration: 1, ease: 'power4.out' }, { y: 0, opacity: 1 });
+        timeline8.fromTo('.testimonial-btn', { scale: 0, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 }, { scale: 1, opacity: 1 });
 
         ScrollTrigger.addEventListener('refresh', () => {
             if (scroll) scroll.update();

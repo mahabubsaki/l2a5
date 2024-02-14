@@ -7,13 +7,15 @@ import lowerbg from '../assets/bg.png';
 import Services from "../components/Services";
 import Events from "../components/Events";
 import Pricing from "../components/Pricing";
+import Gallery from "../components/Gallery";
+import Testimonial from "../components/Testimonial";
 
 const App = () => {
 
   return (
     <Fragment>
 
-
+      <div id="scroll-top" />
       <div className="min-h-[100dvh] bg-repeat pb-12 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }} >
         <Navbar />
         <div className="mt-6">
@@ -31,8 +33,14 @@ const App = () => {
         <div className="max-w-[1500px] mb-32 mx-auto">
           <Events />
         </div>
-        <div className="max-w-[1500px] mx-auto">
+        <div className="max-w-[1500px] mb-40 mx-auto">
           <Pricing />
+        </div>
+        <div className="max-w-[1500px] mb-32 mx-auto">
+          <Gallery />
+        </div>
+        <div className="max-w-[1500px] mb-32 mx-auto">
+          <Testimonial />
         </div>
       </div>
     </Fragment>
