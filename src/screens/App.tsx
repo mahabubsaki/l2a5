@@ -5,6 +5,8 @@ import Client from "../components/Client";
 import { Fragment } from "react";
 import lowerbg from '../assets/bg.png';
 import Services from "../components/Services";
+import Events from "../components/Events";
+import Pricing from "../components/Pricing";
 
 const App = () => {
 
@@ -22,8 +24,16 @@ const App = () => {
       <div className="mt-2">
         <Client />
       </div>
-      <div className="min-h-[500px] bg-no-repeat bg-cover bg-center mb-20 pb-12" style={{ backgroundImage: `url(${lowerbg})` }}>
-        <Services />
+      <div className="min-h-[1000px] bg-no-repeat bg-cover bg-center pb-12" style={{ backgroundImage: `url(${lowerbg})` }}>
+        <div className="mb-32">
+          <Services />
+        </div>
+        <div className="max-w-[1500px] mb-32 mx-auto">
+          <Events />
+        </div>
+        <div className="max-w-[1500px] mx-auto">
+          <Pricing />
+        </div>
       </div>
     </Fragment>
   );

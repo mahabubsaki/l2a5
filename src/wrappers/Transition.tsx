@@ -1,6 +1,7 @@
 import { motion, useAnimate } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
 import useToggleSideBar from "../store/useToggleSideBar";
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Transition = ({ children, item }: { children: ReactNode; item: string; }) => {
     const { setClose, setOpen } = useToggleSideBar();
@@ -16,6 +17,7 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
     useEffect(() => {
         // animate('#slide-in', { y: '0%', duration: 0.5, ease: 'easeInOut' });
         async function sequenceAnimation() {
+
             setOpen();
             await animate(slideOutRef.current!, { x: '0%' }, { duration: 0 });
             await animate(slideOutRef.current!, { y: '0%' }, { duration: 1, ease: 'easeInOut' });
@@ -26,8 +28,12 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
                 animate('#border'!, { width: 'fit-content' }, { duration: 0.5, ease: 'easeInOut' })]);
 
             await animate(slideOutRef.current!, { y: '100vh', x: '100vw' }, { duration: 0, ease: 'easeInOut' });
+
+
             setClose();
+
             window.dispatchEvent(new Event('resize'));
+
 
 
             // await animate(slideOutRef.current, { y: '-100%', duration: 1.5, ease: 'easeInOut' });

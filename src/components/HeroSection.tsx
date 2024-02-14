@@ -6,7 +6,7 @@ import Button from '../anim/Button';
 
 const HeroSection = () => {
     return (
-        <div className='w-[90%] mx-auto items-center flex-col-reverse lg:flex-row flex  gap-8 lg:gap-0'>
+        <div className='w-[95%] mx-auto items-center flex-col-reverse lg:flex-row flex  gap-8 lg:gap-2'>
             <div className='flex-1'>
                 <Main />
             </div>
@@ -37,10 +37,10 @@ const Main = () => {
                 </Button>
             </div>
             <div className='flex flex-wrap gap-4'>
-                <div className='rounded-[32px] px-4 flex-1 basis-[300px] py-6 border-2 border-white backdrop-blur-[2px] '>
+                <div className='rounded-[32px] px-4 flex-1 basis-[200px]  py-6 border-2 border-white backdrop-blur-[2px] '>
                     <button className='p-3 mb-8 rounded-full bg-[rgba(104,95,212,0.35)] inline-block'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <g clip-path="url(#clip0_1_1676)">
+                            <g clipPath="url(#clip0_1_1676)">
                                 <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#685FD4" />
                             </g>
                             <defs>
@@ -54,10 +54,10 @@ const Main = () => {
                     <p>
                         Fundraising events are gatherings organized to raise money for a cause or organization. They typically involve activities such as auctions, dinners, or concerts, aiming to engage donors and supporters in contributing to the fundraising goal.</p>
                 </div>
-                <div className='rounded-[32px] px-4 py-6 flex-1 basis-[300px] border-2 border-white backdrop-blur-[2px] '>
+                <div className='rounded-[32px] px-4 py-6 flex-1 basis-[200px] border-2 border-white backdrop-blur-[2px] '>
                     <button className='p-3 mb-8 rounded-full bg-[rgba(242,201,76,0.35)] inline-block'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <g clip-path="url(#clip0_1_1682)">
+                            <g clipPath="url(#clip0_1_1682)">
                                 <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#F2C94C" />
                             </g>
                             <defs>
@@ -71,11 +71,11 @@ const Main = () => {
                     <p>
                         Sporting events are competitive gatherings where athletes or teams engage in various sports disciplines, showcasing their skills and talents. These events attract spectators and often promote teamwork, athleticism, and sportsmanship while providing entertainment.</p>
                 </div>
-                <div className='rounded-[32px] px-4 py-6 flex-1 basis-[300px] border-2 border-white backdrop-blur-[2px] '>
+                <div className='rounded-[32px] px-4 py-6 flex-1 basis-[200px] border-2 border-white backdrop-blur-[2px] '>
                     <button className=' p-3 mb-8 rounded-full bg-[rgba(138,178,220,0.35)] inline-block'>
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <g clip-path="url(#clip0_1_1689)">
+                            <g clipPath="url(#clip0_1_1689)">
                                 <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z" fill="#8AB2DC" />
                             </g>
                             <defs>

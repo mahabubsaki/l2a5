@@ -77,6 +77,46 @@ const BaseLayout = () => {
             }
         });
         timelin3.from('.service__card', { scale: 0, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
+
+        const timeline4 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#events',
+                scroller: '#container',
+                start: 'top center',
+                end: 'bottom center',
+            }
+        });
+
+        ['.my__heading3', '.events__description'].forEach((item) => {
+            timeline4.from(item, { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
+        });
+
+
+        const timeline5 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#event-container',
+                scroller: '#container',
+                start: 'top center',
+                end: 'bottom center',
+            }
+        });
+
+        timeline5.from('.event__card', { scale: 0, opacity: 0, duration: 1.5, y: 100, ease: 'power4.out', stagger: 0.2 });
+
+        const timeline6 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#pricing',
+                scroller: '#container',
+                start: 'top center',
+                end: 'bottom center',
+            }
+        });
+
+        ['.my__heading4', '.pricing__description'].forEach((item) => {
+            timeline6.from(item, { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
+        });
+
+
         ScrollTrigger.addEventListener('refresh', () => {
             if (scroll) scroll.update();
         });
@@ -124,12 +164,14 @@ const BaseLayout = () => {
                 innerScale={1}
                 outerScale={2}
                 outerAlpha={0}
+
                 clickables={['a',
                     'input[type="text"]',
                     'input[type="email"]',
                     'input[type="number"]',
                     'input[type="submit"]',
                     'input[type="image"]',
+                    '.clickable',
                     'label[for]',
                     'select',
                     'textarea',

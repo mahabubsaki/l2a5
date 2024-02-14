@@ -3,7 +3,7 @@ import service1 from '../assets/service1.jpg';
 import service2 from '../assets/service2.jpg';
 import service3 from '../assets/service3.jpg';
 import { FaCheck } from 'react-icons/fa';
-import { AnimatePresence, motion, useAnimate } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Button from '../anim/Button';
 
 const services = [
@@ -20,7 +20,7 @@ const Services = () => {
                 <h1 className='text-6xl my__heading2 mb-3 text-black font-bold text-center'>Our Services</h1>
                 <p className='w-[90%] md:w-2/3 lg:w-1/2 mx-auto text-center mb-14 service__description '> We have one of the best services in the industry. Our team of experienced professionals is dedicated to providing top-notch solutions to our clients. We specialize in a wide range of services, ensuring that we can meet the diverse needs of our clients.</p>
             </div>
-            <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5 max-w-[1200px] mx-auto' id='service-card-container'>
+            <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5 max-w-[1500px] mx-auto' id='service-card-container'>
                 {services.map((service, index) => (
                     <ServiceCard text={service.text} key={index} index={index} title={service.title} description={service.description} image={service.img} />
                 ))}
