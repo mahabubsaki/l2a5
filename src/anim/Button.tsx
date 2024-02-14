@@ -1,9 +1,13 @@
-import React, { ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, FunctionComponent } from 'react';
 import styles from './Button.module.css';
+import classNames from 'classnames';
 
-const Button = ({ children }: { children: ReactNode; }) => {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: FunctionComponent<ButtonProps> = ({ children, ...props }) => {
+    console.log(props.className);
     return (
-        <button className={styles.button}>{children}</button>
+        <button className={classNames(styles.button, props.className)}>{children}</button>
     );
 };
 

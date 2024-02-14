@@ -14,7 +14,7 @@ const App = () => {
     <Fragment>
 
 
-      <div className="min-h-[100dvh] bg-no-repeat pb-12 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }} >
+      <div className="min-h-[100dvh] bg-repeat pb-12 bg-cover bg-center" style={{ backgroundImage: `url(${bg})` }} >
         <Navbar />
         <div className="mt-6">
           <HeroSection />

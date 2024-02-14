@@ -32,7 +32,7 @@ const Main = () => {
                     We have a lineup of engaging speakers, interactive workshops, and plenty of chances
                     to connect with fellow enthusiasts. Don't miss out on this fantastic event! Register now to secure your spot.
                     We look forward to seeing you there!</p>
-                <Button>
+                <Button className='bg-[#3461FF]'>
                     Explore
                 </Button>
             </div>

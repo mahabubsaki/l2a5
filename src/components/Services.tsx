@@ -87,7 +87,7 @@ const ServiceCard = ({ title, description, image, index, text }: { title: string
                 </ul>
                 <AnimatePresence mode='wait'>
                     {hovering ? <motion.div className='w-full flex flex-col  origin-top' initial={{ scaleY: 0, height: 0, marginTop: 0, marginBottom: 0 }} animate={{ scaleY: 1, height: 'auto', marginTop: 16, marginBottom: 16 }} exit={{ scaleY: 0, height: 0, marginTop: 0, marginBottom: 0 }}>
-                        {hovering ? <Button>
+                        {hovering ? <Button className='bg-[#3461FF]'>
                             Check It Out
                         </Button> : null}
                     </motion.div> : null}

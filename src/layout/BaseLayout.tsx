@@ -48,8 +48,8 @@ const BaseLayout = () => {
             scrollTrigger: {
                 trigger: '#client',
                 scroller: '#container',
-                start: 'top center',
-                end: 'bottom center',
+                start: 'top 70%',
+                end: 'top 70%'
             }
         });
 
@@ -61,8 +61,8 @@ const BaseLayout = () => {
             scrollTrigger: {
                 trigger: '#services',
                 scroller: '#container',
-                start: 'top center',
-                end: 'bottom center',
+                start: 'top 70%',
+                end: 'top 70%',
             }
         });
         ['.my__heading2', '.service__description',].forEach((item) => {
@@ -72,8 +72,8 @@ const BaseLayout = () => {
             scrollTrigger: {
                 trigger: '#service-card-container',
                 scroller: '#container',
-                start: 'top center',
-                end: 'bottom center',
+                start: 'top 70%',
+                end: 'top 70%',
             }
         });
         timelin3.from('.service__card', { scale: 0, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
@@ -82,8 +82,8 @@ const BaseLayout = () => {
             scrollTrigger: {
                 trigger: '#events',
                 scroller: '#container',
-                start: 'top center',
-                end: 'bottom center',
+                start: 'top 70%',
+                end: 'top 70%',
             }
         });
 
@@ -96,8 +96,8 @@ const BaseLayout = () => {
             scrollTrigger: {
                 trigger: '#event-container',
                 scroller: '#container',
-                start: 'top center',
-                end: 'bottom center',
+                start: 'top 70%',
+                end: 'top 70%',
             }
         });
 
@@ -107,14 +107,27 @@ const BaseLayout = () => {
             scrollTrigger: {
                 trigger: '#pricing',
                 scroller: '#container',
-                start: 'top center',
-                end: 'bottom center',
+                start: 'top 70%',
+                end: 'top 70%',
             }
         });
 
         ['.my__heading4', '.pricing__description'].forEach((item) => {
             timeline6.from(item, { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
         });
+
+        const timeline7 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#pricing-card-container',
+                scroller: '#container',
+                start: 'top 70%',
+                end: 'top 70%',
+            }
+        });
+
+        timeline7.fromTo('.pricing_card_1', { x: '104%', ease: 'power4.out', opacity: 0 }, { x: '0%', opacity: 1 });
+        timeline7.fromTo('.pricing_card_2', { ease: 'power4.out', opacity: 0 }, { opacity: 1 });
+        timeline7.fromTo('.pricing_card_3', { x: '-104%', ease: 'power4.out', opacity: 0 }, { x: '0%', opacity: 1 });
 
 
         ScrollTrigger.addEventListener('refresh', () => {

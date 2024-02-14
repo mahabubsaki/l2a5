@@ -1,7 +1,7 @@
 import { motion, useAnimate } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
 import useToggleSideBar from "../store/useToggleSideBar";
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 
 const Transition = ({ children, item }: { children: ReactNode; item: string; }) => {
     const { setClose, setOpen } = useToggleSideBar();
