@@ -11,3 +11,11 @@ body {
 .has-scroll-smooth #container {
   transform: perspective(1px);
   }
+  
+
+.slick-slide > div {
+  margin: 0 20px;
+}
+.slick-list {
+  margin: 0 -20px;
+}
