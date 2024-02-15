@@ -170,6 +170,17 @@ const BaseLayout = () => {
 
         timeline10.from('.recent-container-item', { y: 100, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
 
+        const timeline11 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#faq',
+                scroller: '#container',
+                start: 'top 70%',
+                end: 'top 70%'
+            }
+        });
+
+        timeline11.from('.faq__section', { y: 100, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
+
 
 
         ScrollTrigger.addEventListener('refresh', () => {

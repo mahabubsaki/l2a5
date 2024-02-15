@@ -10,6 +10,10 @@ import Pricing from "../components/Pricing";
 import Gallery from "../components/Gallery";
 import Testimonial from "../components/Testimonial";
 import RecentEvents from "../components/RecentEvents";
+import ContactUs from "../components/ContactUs";
+import FAQ from "../components/FAQ";
+import Footer from "../components/Footer";
+
 
 const App = () => {
 
@@ -46,6 +50,15 @@ const App = () => {
         <div className="max-w-[1500px] mb-32 mx-auto">
           <RecentEvents />
         </div>
+        <div className="max-w-[1500px] mb-32 mx-auto">
+          <FAQ />
+        </div>
+        <div className="max-w-[1500px] mb-32 mx-auto">
+          <ContactUs />
+        </div>
+      </div>
+      <div>
+        <Footer />
       </div>
     </Fragment>
   );
