@@ -146,6 +146,20 @@ const BaseLayout = () => {
         timeline8.fromTo('.my__heading5', { y: 100, opacity: 0, duration: 1, ease: 'power4.out' }, { y: 0, opacity: 1 });
         timeline8.fromTo('.testimonial-btn', { scale: 0, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 }, { scale: 1, opacity: 1 });
 
+        const timeline9 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#gallery',
+                scroller: '#container',
+                start: 'top 70%',
+                end: 'top 70%',
+            }
+        });
+        ['.my__heading6', '.gallery__description'].forEach((item) => {
+            timeline9.from(item, { y: 100, opacity: 0, duration: 1, ease: 'power4.out' });
+        });
+
+
+
         ScrollTrigger.addEventListener('refresh', () => {
             if (scroll) scroll.update();
         });

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
+import Slider from "react-slick";
 
 import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6';
 
@@ -27,8 +27,10 @@ const Testimonial = () => {
 
 const TSlider = () => {
     return (
-        <div>
+        <div >
+            <Slider>
 
+            </Slider>
         </div>
     );
 };

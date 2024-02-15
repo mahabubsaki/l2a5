@@ -5,6 +5,7 @@ import packag from '../assets/Package.svg';
 import stack from '../assets/Stack.svg';
 import rocket from '../assets/RocketLaunch.svg';
 import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
 
 
@@ -60,6 +61,7 @@ const packages = [
     },
 ];
 
+
 const Pricing = () => {
     return (
         <div>
@@ -102,9 +104,26 @@ const Pricing = () => {
                             </Button>
                         </div>
                         <hr className='bg-[#E6E8EC] opacity-70 -mr-5 -ml-8' />
-                        <ul className='pt-8 flex flex-col gap-5'>
+                        <motion.ul viewport={{ once: true }} variants={{
+                            notInView: {
+                                filter: 'blur(8px)',
+                            },
+                            inView: {
+                                filter: 'blur(0px)',
+                                transition: {
+                                    staggerChildren: 0.3
+                                }
+                            }
+                        }} initial='notInView' whileInView='inView' className='pt-8 flex flex-col gap-5'>
                             {pack.features.map((feature, index) => (
-                                <li key={index} className={classNames('flex gap-4 items-center', {
+                                <motion.li viewport={{ once: true }} variants={{
+                                    notInView: {
+                                        filter: 'blur(8px)',
+                                    },
+                                    inView: {
+                                        filter: 'blur(0px)',
+                                    }
+                                }} key={index} className={classNames('flex gap-4 items-center', {
                                     'opacity-20': !feature.avaiable
                                 })}>
                                     <div className='size-5 bg-[#E7F5E8] rounded-full flex justify-center items-center text-green-500'>
@@ -113,9 +132,9 @@ const Pricing = () => {
                                     <p className={classNames('text-[#42526B]', {
                                         'line-through': !feature.avaiable
                                     })}>{feature.text}</p>
-                                </li>
+                                </motion.li>
                             ))}
-                        </ul>
+                        </motion.ul>
                     </div>
                 </div>)}
 
