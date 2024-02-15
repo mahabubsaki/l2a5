@@ -11,7 +11,7 @@ import picture8 from '../assets/Picture (8).png';
 import picture9 from '../assets/Picture10.png';
 import classNames from 'classnames';
 import { FaCheck } from 'react-icons/fa';
-import { MotionConfig, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useMediaQuery } from '@uidotdev/usehooks';
 
 
@@ -80,7 +80,7 @@ const GalleryGrid = () => {
 
     const isLargeDevice = useMediaQuery('(min-width: 640px)');
     return (
-        <div className='grid grid-cols-2 sm:grid-cols-4 border bg-no-repeat bg-left-top' style={{ backgroundImage: `url(${star})` }}>
+        <div className='grid grid-cols-2 sm:grid-cols-4 bg-no-repeat bg-left-top' style={{ backgroundImage: `url(${star})` }}>
 
             <div className='flex flex-col justify-end sm:justify-center'>
 

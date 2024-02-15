@@ -9,6 +9,7 @@ import Events from "../components/Events";
 import Pricing from "../components/Pricing";
 import Gallery from "../components/Gallery";
 import Testimonial from "../components/Testimonial";
+import RecentEvents from "../components/RecentEvents";
 
 const App = () => {
 
@@ -41,6 +42,9 @@ const App = () => {
         </div>
         <div className="max-w-[1500px] mb-32 mx-auto">
           <Testimonial />
+        </div>
+        <div className="max-w-[1500px] mb-32 mx-auto">
+          <RecentEvents />
         </div>
       </div>
     </Fragment>

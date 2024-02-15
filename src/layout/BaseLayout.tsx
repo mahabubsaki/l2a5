@@ -159,6 +159,18 @@ const BaseLayout = () => {
         });
 
 
+        const timeline10 = gsap.timeline({
+            scrollTrigger: {
+                trigger: '#recent-events',
+                scroller: '#container',
+                start: 'top 70%',
+                end: 'top 70%'
+            }
+        });
+
+        timeline10.from('.recent-container-item', { y: 100, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.2 });
+
+
 
         ScrollTrigger.addEventListener('refresh', () => {
             if (scroll) scroll.update();
