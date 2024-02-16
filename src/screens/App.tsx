@@ -57,8 +57,10 @@ const App = () => {
           <ContactUs />
         </div>
       </div>
-      <div>
-        <Footer />
+      <div className="bg-[rgba(17,22,23,0.85)] border border-[#334155]">
+        <div className=" max-w-[1500px] mx-auto">
+          <Footer />
+        </div>
       </div>
     </Fragment>
   );
