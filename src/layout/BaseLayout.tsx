@@ -53,7 +53,7 @@ const BaseLayout = () => {
 
         ScrollTrigger.scrollerProxy('#container', {
             scrollTop(value) {
-                return arguments.length ? scroll.scrollTo(value, 0, 0) : scroll.scroll.instance.scroll.y;
+                return arguments.length ? (scroll as any).scrollTo(value, 0, 0) : (scroll as any).scroll.instance.scroll.y;
             },
             getBoundingClientRect() {
                 return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };

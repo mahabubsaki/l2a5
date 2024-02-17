@@ -1,4 +1,4 @@
-import { useQueries } from "@tanstack/react-query";
+
 
 import { IService } from "./Services";
 import useFetcher from "../store/useFetcher";

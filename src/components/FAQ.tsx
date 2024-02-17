@@ -85,7 +85,8 @@ export default function FAQ() {
 
                 <Accordion transition transitionTimeout={200}>
                     {faqs.map((item, index) => (
-                        <AccordionItem key={index} header={item.question}>
+                        // @ts-ignore
+                        <AccordionItem key={index} header={item.question} >
                             <p>{item.answer}</p>
                         </AccordionItem>
                     ))}
