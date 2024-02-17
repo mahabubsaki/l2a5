@@ -5,7 +5,6 @@ import classNames from 'classnames';
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button: FunctionComponent<ButtonProps> = ({ children, ...props }) => {
-    console.log(props.className);
     return (
         <button className={classNames(styles.button, props.className)}>{children}</button>
     );

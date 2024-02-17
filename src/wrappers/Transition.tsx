@@ -58,9 +58,9 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
 
             <motion.div ref={slideOutRef} id="slide-in" initial={{ y: '100vh', x: '100vw' }} className="absolute left-0 top-0 h-[100dvh] w-full bg-black" >
                 <div className="w-full h-full  relative justify-center items-center text-white">
-                    <motion.p ref={titleRef} initial={{ opacity: 0, y: '50px' }} className="absolute top-1/2  bottom-1/2 -translate-x-1/2 left-1/2 right-1/2 -translate-y-1/2 text-4xl font-bold uppercase flex justify-center" >
+                    <motion.p ref={titleRef} initial={{ opacity: 0, y: '50px' }} className="absolute top-1/2  bottom-1/2 -translate-x-1/2 left-1/2 right-1/2 -translate-y-1/2 text-4xl h-fit text-center font-bold uppercase flex justify-center" >
                         {item}
-                        <motion.span initial={{ width: '0px' }} id="border" className="h-[2.5px] mt-2 text-4xl text-transparent bg-white absolute  inline-block mx-auto top-10">
+                        <motion.span initial={{ width: '0px' }} id="border" className="h-[2.5px] mt-2 text-4xl text-transparent bg-white absolute  inline-block mx-auto -bottom-2">
                             {item}
                         </motion.span>
                     </motion.p>

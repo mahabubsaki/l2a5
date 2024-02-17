@@ -11,6 +11,9 @@ import AddServices from "../screens/AddServices";
 import AddRecentEvents from "../screens/AddRecentEvents";
 import DashBoardHome from "../screens/DashBoardHome";
 import AddEvents from "../screens/AddEvents";
+import RecentEvents from "../screens/RecentEvents";
+import Services from "../screens/Services";
+import Events from "../screens/Events";
 
 const router = createBrowserRouter([
   {
@@ -43,22 +46,44 @@ const router = createBrowserRouter([
           {
             path: "add-services",
             element:
-              <Transition key={'add-services'} item='services'>
+              <Transition key={'add-services'} item='add services'>
                 <AddServices />
               </Transition>
           },
           {
             path: "add-events",
             element:
-              <Transition key={'add-events'} item='events'>
+              <Transition key={'add-events'} item='add events'>
                 <AddEvents />
               </Transition>
           },
           {
             path: "add-recent-events",
             element:
-              <Transition key={'add-recent-events'} item='recent'>
+              <Transition key={'add-recent-events'} item='add recents'>
                 <AddRecentEvents />
+              </Transition>
+          },
+          {
+            path: "recent-events",
+            element:
+              <Transition key={'recent-events'} item='recent events'>
+                <RecentEvents />
+              </Transition>
+          },
+          {
+            path: "events",
+            element:
+              <Transition key={'events'} item='events'>
+                <Events />
+              </Transition>
+          }
+          ,
+          {
+            path: "services",
+            element:
+              <Transition key={'services'} item='services'>
+                <Services />
               </Transition>
           }
 
