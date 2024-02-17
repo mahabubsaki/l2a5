@@ -1,7 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import service1 from '../assets/service1.jpg';
-import service2 from '../assets/service2.jpg';
-import service3 from '../assets/service3.jpg';
 import { FaCheck } from 'react-icons/fa';
 import { AnimatePresence, motion } from 'framer-motion';
 import Button from '../anim/Button';
@@ -10,16 +7,13 @@ import { IService } from '../screens/Services';
 
 
 
+
 const Services = () => {
 
-    const { data, error, isError, isLoading } = useFetcher<IService>('services', 'services');
+    const { data } = useFetcher<IService>('services', 'services');
 
-    if (isLoading) {
-        return <p>Loading...</p>;
-    }
-    if (isError) {
-        return <p>Error: {error?.message}</p>;
-    }
+
+
     return (
         <div >
             <div className='pt-14' id='services'>

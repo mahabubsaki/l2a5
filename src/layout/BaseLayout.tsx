@@ -224,6 +224,7 @@ const BaseLayout = () => {
         , [pathname]);
     const { open: navOpen, sideBar } = useToggleSideBar();
     useEffect(() => {
+        console.log({ navOpen, sideBar });
         scrollRef?.update();
 
         if (navOpen || sideBar) {
@@ -238,7 +239,7 @@ const BaseLayout = () => {
     return (
 
         <Fragment>
-            <main id='container' className={classNames('p-0', { 'h-screen': (navOpen || sideBar), 'min-h-screen': (!navOpen || !sideBar) })}>
+            <main id='container' className={classNames('p-0', { 'h-screen': (navOpen || sideBar), 'min-h-screen': (!navOpen || !sideBar), 'overflow-hidden': pathname !== '/' })}>
 
                 <Outlet />
             </main>

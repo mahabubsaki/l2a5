@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { FaList, FaPlusCircle } from 'react-icons/fa';
 import { FaCirclePlus } from 'react-icons/fa6';
-import { GoPlusCircle } from 'react-icons/go';
+// import { GoPlusCircle } from 'react-icons/go';
 import { IoHome } from 'react-icons/io5';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { RiFileListFill } from 'react-icons/ri';
-import { VscListOrdered } from 'react-icons/vsc';
+// import { VscListOrdered } from 'react-icons/vsc';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
 
@@ -13,10 +13,10 @@ const navbars = [
     { name: 'Dashboard', icon: <LuLayoutDashboard />, link: "/dashboard" },
     { name: 'Services', icon: <FaList />, link: "/dashboard/services" },
     { name: 'Events', icon: <RiFileListFill />, link: "/dashboard/events" },
-    { name: 'Recent Events', icon: <VscListOrdered />, link: "/dashboard/recent-events" },
+    // { name: 'Recent Events', icon: <VscListOrdered />, link: "/dashboard/recent-events" },
     { name: 'Add Sevices', icon: <FaCirclePlus />, link: "/dashboard/add-services" },
     { name: 'Add Events', icon: <FaPlusCircle />, link: "/dashboard/add-events" },
-    { name: 'Add Recent Events', icon: <GoPlusCircle />, link: "/dashboard/add-recent-events" },
+    // { name: 'Add Recent Events', icon: <GoPlusCircle />, link: "/dashboard/add-recent-events" },
     { name: 'Home', icon: <IoHome />, link: "/" },
 ];
 

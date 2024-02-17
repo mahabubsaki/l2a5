@@ -2,7 +2,7 @@
 
 const RecentEvents = () => {
     return (
-        <div>RecentEvents</div>
+        <div className="w-full p-5">RecentEvents</div>
     );
 };
 

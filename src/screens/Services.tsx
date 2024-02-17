@@ -2,9 +2,7 @@ import { MdDelete, MdEdit } from "react-icons/md";
 import useFetcher from "../store/useFetcher";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiAlertCircle } from "react-icons/fi";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
-import Button from "../anim/Button";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axiosInstance from "../utils/axiosInstance";
@@ -112,7 +110,7 @@ const EditModal = ({ isOpen, setIsOpen, service }: { isOpen: boolean, setIsOpen:
 
     });
     const mutation = useMutation({
-        mutationFn: ({ _id, ...editTodo }: IService) => axios.put(`/service/edit/${_id}`, editTodo),
+        mutationFn: ({ _id, ...editService }: IService) => axios.put(`/service/edit/${_id}`, editService),
         onSuccess: () => {
             client.invalidateQueries({ queryKey: ['services'] });
 

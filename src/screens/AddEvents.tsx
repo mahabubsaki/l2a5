@@ -32,6 +32,7 @@ const AddEvents = () => {
         register,
         handleSubmit,
         formState: { errors },
+        reset
     } = useForm<EventInputs>();
 
     const onSubmit: SubmitHandler<EventInputs> = (data) => {
@@ -39,12 +40,12 @@ const AddEvents = () => {
             loading: 'Adding Event...',
             success: () => 'Added Event Successfully',
             error: (err) => err.message,
-
+            finally: () => reset()
         });
     };
 
     return (
-        <div className='w-full'>
+        <div className='w-full p-5'>
             <h1 className='text-center text-3xl font-bold'>Add Event</h1>
             <form onSubmit={handleSubmit(onSubmit)} className='max-w-[500px] mx-auto flex gap-5 flex-col mt-10'>
                 <div className="relative">

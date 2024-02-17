@@ -2,7 +2,7 @@
 
 const DashBoardHome = () => {
     return (
-        <div>DashBoardHome</div>
+        <div className="w-full p-5"> DashBoardHome</div>
     );
 };
 

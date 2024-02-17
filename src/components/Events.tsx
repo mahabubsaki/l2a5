@@ -1,22 +1,11 @@
 import 'react-grid-layout/css/styles.css';
 import 'react-resizable/css/styles.css';
 import { Responsive, WidthProvider } from "react-grid-layout";
-import event1 from '../assets/event1.png';
-import event2 from '../assets/event2.png';
-import event3 from '../assets/event3.png';
-import event4 from '../assets/event4.png';
-import event5 from '../assets/event5.png';
-import event6 from '../assets/event6.png';
 import { motion } from 'framer-motion';
+import useFetcher from '../store/useFetcher';
+import { IEvent } from '../screens/Events';
 
-const events = [
-    { title: 'Event 1', img: event1 },
-    { title: 'Event 2', img: event2 },
-    { title: 'Event 3', img: event3 },
-    { title: 'Event 4', img: event4 },
-    { title: 'Event 5', img: event5 },
-    { title: 'Event 6', img: event6 }
-];
+
 const generateLayout = (length: number) => {
 
     const large = [];
@@ -68,9 +57,11 @@ const generateLayout = (length: number) => {
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const Events = () => {
 
+    const { data } = useFetcher<IEvent>('events', 'events');
+    const layout = generateLayout(data.length);
 
 
-    const layout = generateLayout(events.length);
+
     return (
         <div>
             <div id='events'>
@@ -92,7 +83,8 @@ const Events = () => {
                     rowHeight={270}
                     margin={[20, 20]}
                 >
-                    {events.map((event, index) => (
+
+                    {data.map((event, index) => (
                         <div key={index} className='rounded-md event__card p-7 bg-[rgba(134,130,176,0.12)]'>
                             <motion.div className='h-[calc(100%-30px)]  rounded-lg overflow-hidden mb-3  group'>
                                 <motion.img src={event.img
