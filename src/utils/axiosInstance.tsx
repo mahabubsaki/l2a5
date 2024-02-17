@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = () => {
     const instance = axios.create({
-        baseURL: 'http://localhost:5000',
+        baseURL: 'https://event-360-backend-gold.vercel.app',
     });
 
     return instance;
