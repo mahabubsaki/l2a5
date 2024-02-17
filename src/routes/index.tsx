@@ -1,11 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../screens/App";
-
 import BaseLayout from "../layout/BaseLayout";
-import About from "../screens/About";
 import Transition from "../wrappers/Transition";
-import Navbar from "../components/Navbar";
-import Contact from "../screens/Contact";
 import Dashboard from "../screens/Dashboard";
 import AddServices from "../screens/AddServices";
 import AddRecentEvents from "../screens/AddRecentEvents";

@@ -3,7 +3,8 @@ import Button from '../anim/Button';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import axiosInstance from '../utils/axiosInstance';
 import { SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
-type Inputs = {
+import { toast } from 'sonner';
+type ServiceInputs = {
     title: string;
     img: string;
     description: string;
@@ -17,10 +18,14 @@ const AddServices = () => {
     const client = useQueryClient();
     const axios = axiosInstance();
     const mutation = useMutation({
-        mutationFn: (newTodo: Inputs) => axios.post('/add-service', newTodo),
+        mutationFn: (newTodo: ServiceInputs) => axios.post('/add-service', newTodo),
         onSuccess: () => {
             client.invalidateQueries({ queryKey: ['services'] });
-        }
+        },
+        onError: () => {
+            return 'Error Adding Service';
+        },
+        mutationKey: ['addService'],
     });
 
     const {
@@ -28,7 +33,7 @@ const AddServices = () => {
         handleSubmit,
         control,
         formState: { errors },
-    } = useForm<Inputs>({
+    } = useForm<ServiceInputs>({
         defaultValues: {
             description: '',
             features: [{ feature: '' }],
@@ -43,7 +48,14 @@ const AddServices = () => {
 
     });
 
-    const onSubmit: SubmitHandler<Inputs> = (data) => mutation.mutate(data);
+    const onSubmit: SubmitHandler<ServiceInputs> = (data) => {
+        toast.promise(mutation.mutateAsync(data), {
+            loading: 'Adding Service...',
+            success: () => 'Added Service Successfully',
+            error: (err) => err.message,
+
+        });
+    };
 
 
     return (
@@ -54,6 +66,7 @@ const AddServices = () => {
                     <label>
                         <p className='text-sm text-gray-700 mb-2'>Title</p>
                         <input
+                            autoComplete='off'
                             {...register('title', { required: 'Title is required' })}
                             className="bg-gray-100 border-2 border-gray-300 rounded-md py-2 px-4 w-full text-sm text-gray-700 focus:outline-none focus:border-purple-500"
                             placeholder="Enter Service Title"
@@ -65,8 +78,9 @@ const AddServices = () => {
                     <label>
                         <p className='text-sm text-gray-700 mb-2'>Image</p>
                         <input
+                            autoComplete='off'
                             {...register('img', { required: 'Image Link is required' })}
-
+                            type='url'
                             className="bg-gray-100 border-2 border-gray-300 rounded-md py-2 px-4 w-full text-sm text-gray-700 focus:outline-none focus:border-purple-500"
                             placeholder="Enter Service Image Link"
                         />
@@ -81,6 +95,7 @@ const AddServices = () => {
                             <label>
                                 <p className='text-sm text-gray-700 mb-2'>Feature {index + 1}</p>
                                 <input
+                                    autoComplete='off'
                                     {...register(`features.${index}.feature`, { required: `Feature ${index + 1} is Required` })}
                                     className="bg-gray-100 border-2 border-gray-300 rounded-md py-2 px-4 w-full text-sm text-gray-700 focus:outline-none focus:border-purple-500"
                                     placeholder={`Enter Service Feature ${index + 1}`}

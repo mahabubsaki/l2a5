@@ -1,28 +1,34 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import service1 from '../assets/service1.jpg';
 import service2 from '../assets/service2.jpg';
 import service3 from '../assets/service3.jpg';
 import { FaCheck } from 'react-icons/fa';
 import { AnimatePresence, motion } from 'framer-motion';
 import Button from '../anim/Button';
+import useFetcher from '../store/useFetcher';
+import { IService } from '../screens/Services';
 
-const services = [
-    { img: service1, title: 'Corporate event', description: ['One day pas access all lecture', 'Lunch and Snack', 'Meet Event Speaker', 'Front Seat', 'One day pas access all lecture'], text: 'Our corporate events are designed to foster team building, innovation, and business growth. With a focus on professional development and networking, our events provide an ideal platform for businesses to connect, collaborate, and create lasting partnerships.' },
-    { img: service2, title: 'Organization event', description: ['One day pas access all lecture', 'Lunch and Snack', 'Meet Event Speaker', 'Front Seat', 'One day pas access all lecture'], text: "We excel in organizing events for various organizations, catering to their unique needs and objectives. Whether it's a charity fundraiser, a community gathering, or an educational seminar, we ensure a seamless experience that aligns with your organization's mission." },
-    { img: service3, title: 'Wedding event', description: ['One day pas access all lecture', 'Lunch and Snack', 'Meet Event Speaker', 'Front Seat', 'One day pas access all lecture'], text: '  Make your dream wedding a reality with our comprehensive wedding event services. From intimate gatherings to grand celebrations, we handle every detail with care, ensuring your special day is unforgettable. Our team of wedding planners and designers work tirelessly' },
 
-];
 
 const Services = () => {
+
+    const { data, error, isError, isLoading } = useFetcher<IService>('services', 'services');
+
+    if (isLoading) {
+        return <p>Loading...</p>;
+    }
+    if (isError) {
+        return <p>Error: {error?.message}</p>;
+    }
     return (
         <div >
             <div className='pt-14' id='services'>
                 <h1 className='text-6xl my__heading2 mb-3 text-black font-bold text-center'>Our Services</h1>
-                <p className='w-[90%] md:w-2/3 lg:w-1/2 mx-auto text-center mb-14 service__description '> We have one of the best services in the industry. Our team of experienced professionals is dedicated to providing top-notch solutions to our clients. We specialize in a wide range of services, ensuring that we can meet the diverse needs of our clients.</p>
+                <p className='w-[90%] md:w-2/3 lg:w-1/2 mx-auto text-center mb-14 service__description'> We have one of the best services in the industry. Our team of experienced professionals is dedicated to providing top-notch solutions to our clients. We specialize in a wide range of services, ensuring that we can meet the diverse needs of our clients.</p>
             </div>
             <div className='grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-5 max-w-[1500px] mx-auto' id='service-card-container'>
-                {services.map((service, index) => (
-                    <ServiceCard text={service.text} key={index} index={index} title={service.title} description={service.description} image={service.img} />
+                {data.map((service, index) => (
+                    <ServiceCard text={service.description} key={index} index={index} title={service.title} description={service.features.map(i => i.feature)} image={service.img} />
                 ))}
             </div>
         </div>

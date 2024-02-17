@@ -1,6 +1,7 @@
 import { motion, useAnimate } from "framer-motion";
 import { ReactNode, useEffect, useRef } from "react";
 import useToggleSideBar from "../store/useToggleSideBar";
+import { useLocation } from "react-router-dom";
 
 
 const Transition = ({ children, item }: { children: ReactNode; item: string; }) => {
@@ -12,8 +13,8 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
     const slideOutRef = useRef<HTMLDivElement>(null);
     const titleRef = useRef<HTMLParagraphElement>(null);
 
+    const { pathname } = useLocation();
 
-    let timeId;
     useEffect(() => {
         // animate('#slide-in', { y: '0%', duration: 0.5, ease: 'easeInOut' });
         async function sequenceAnimation() {
@@ -27,8 +28,11 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
                 animate(rootRef.current!, { y: '0%', opacity: 1 }, { duration: 3, ease: 'easeInOut' }),
                 animate('#border'!, { width: 'fit-content' }, { duration: 0.5, ease: 'easeInOut' })]);
 
-            await animate(slideOutRef.current!, { y: '100vh', x: '100vw' }, { duration: 0, ease: 'easeInOut' });
+            await animate(slideOutRef.current!, { display: 'none' }, { duration: 0, ease: 'easeInOut' });
             window.dispatchEvent(new Event('resize'));
+            if (pathname !== '/') {
+                setClose();
+            }
 
             // setTimeout(() => {
             //     setClose();
@@ -58,7 +62,7 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
 
             <motion.div ref={slideOutRef} id="slide-in" initial={{ y: '100vh', x: '100vw' }} className="absolute left-0 top-0 h-[100dvh] w-full bg-black" >
                 <div className="w-full h-full  relative justify-center items-center text-white">
-                    <motion.p ref={titleRef} initial={{ opacity: 0, y: '50px' }} className="absolute top-1/2  bottom-1/2 -translate-x-1/2 left-1/2 right-1/2 -translate-y-1/2 text-4xl h-fit text-center font-bold uppercase flex justify-center" >
+                    <motion.p ref={titleRef} initial={{ opacity: 0, y: '50px' }} className="absolute top-1/2  bottom-1/2 -translate-x-1/2 left-1/2 right-1/2 -translate-y-1/2 text-4xl h-fit text-ce font-bold uppercase flex justify-center" >
                         {item}
                         <motion.span initial={{ width: '0px' }} id="border" className="h-[2.5px] mt-2 text-4xl text-transparent bg-white absolute  inline-block mx-auto -bottom-2">
                             {item}

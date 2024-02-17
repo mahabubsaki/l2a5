@@ -1,6 +1,4 @@
 import classNames from 'classnames';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import React, { useEffect } from 'react';
 import { FaList, FaPlusCircle } from 'react-icons/fa';
 import { FaCirclePlus } from 'react-icons/fa6';
 import { GoPlusCircle } from 'react-icons/go';
@@ -24,14 +22,12 @@ const navbars = [
 
 const Dashboard = () => {
     const { pathname } = useLocation();
-    useEffect(() => {
-        ScrollTrigger.refresh();
-    }, []);
+
     return (
         <div className='min-h-[100dvh]'>
             <div className='flex lg:flex-row   flex-col'>
                 <div className='w-full lg:w-[300px]  bg-gray-400 flex flex-col gap-5  px-5 py-10'>
-                    {navbars.map(({ name, icon, link }, index) => <Link to={link}>
+                    {navbars.map(({ name, icon, link }, index) => <Link key={name} to={link}>
                         <div key={index} className={classNames('flex items-center text-white font-semibold gap-3 px-4 py-3 rounded  w-full  border border-gray-600 hover:bg-gray-400 duration-500', {
                             'bg-gray-400': pathname === link,
                             'bg-gray-600': !(pathname === link),

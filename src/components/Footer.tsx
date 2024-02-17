@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { BiArrowFromLeft, BiEuro } from 'react-icons/bi';
 import { ImInfo } from 'react-icons/im';
 import { RiGlobalLine } from 'react-icons/ri';

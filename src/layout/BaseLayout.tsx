@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react';
+import { Fragment, useEffect, useLayoutEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 
 import gsap from 'gsap';
@@ -7,6 +7,7 @@ import LocomotiveScroll from 'locomotive-scroll';
 import useToggleSideBar from '../store/useToggleSideBar';
 import classNames from 'classnames';
 import AnimatedCursor from 'react-animated-cursor';
+import { Toaster } from 'sonner';
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +21,7 @@ const BaseLayout = () => {
 
 
     useLayoutEffect(() => {
-
+        if (pathname !== '/') return;
         const scroll = new LocomotiveScroll({
             smooth: true, el: (document.querySelector('#container') as HTMLElement),
 
@@ -224,6 +225,7 @@ const BaseLayout = () => {
     const { open: navOpen, sideBar } = useToggleSideBar();
     useEffect(() => {
         scrollRef?.update();
+
         if (navOpen || sideBar) {
             document.documentElement.style.setProperty('--cursor-color', 'rgb(255,255,255)');
 
@@ -266,7 +268,7 @@ const BaseLayout = () => {
                 outerStyle={{
                     border: `3px solid var(--cursor-color)`
                 }} />
-
+            <Toaster position='top-center' richColors theme='dark' />
         </Fragment>
 
 
