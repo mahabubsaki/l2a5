@@ -1,4 +1,5 @@
 
+import LocomotiveScroll from "locomotive-scroll";
 import { create } from "zustand";
 
 export interface NavState {
@@ -8,6 +9,8 @@ export interface NavState {
     setSideOpen: () => void;
     setSideClose: () => void;
     sideBar: boolean;
+    scroller: LocomotiveScroll | null;
+    setScroller: (scroll: LocomotiveScroll) => void;
 }
 
 const useToggleSideBar = create<NavState>((set) => {
@@ -18,6 +21,8 @@ const useToggleSideBar = create<NavState>((set) => {
         setSideClose: () => set(() => ({ sideBar: false })),
         setOpen: () => set(() => ({ open: true })),
         setClose: () => set(() => ({ open: false })),
+        scroller: null,
+        setScroller: (scroll: LocomotiveScroll) => set(() => ({ scroller: scroll })),
     };
 });
 

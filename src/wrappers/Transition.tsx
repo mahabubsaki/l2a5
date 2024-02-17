@@ -13,7 +13,7 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
     const titleRef = useRef<HTMLParagraphElement>(null);
 
 
-
+    let timeId;
     useEffect(() => {
         // animate('#slide-in', { y: '0%', duration: 0.5, ease: 'easeInOut' });
         async function sequenceAnimation() {
@@ -28,11 +28,14 @@ const Transition = ({ children, item }: { children: ReactNode; item: string; }) 
                 animate('#border'!, { width: 'fit-content' }, { duration: 0.5, ease: 'easeInOut' })]);
 
             await animate(slideOutRef.current!, { y: '100vh', x: '100vw' }, { duration: 0, ease: 'easeInOut' });
-
-
-            setClose();
-
             window.dispatchEvent(new Event('resize'));
+
+            // setTimeout(() => {
+            //     setClose();
+            // }, 1000);
+
+
+
 
 
 

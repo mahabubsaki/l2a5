@@ -4,6 +4,7 @@
 
 body {
     font-family: 'Montserrat Variable', sans-serif;
+    overflow-x: hidden;
   }
 :root{
   --cursor-color:rgb(255, 255, 255)

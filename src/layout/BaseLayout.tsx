@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useLayoutEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -14,24 +14,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 const BaseLayout = () => {
     const [scrollRef, setScrollRef] = useState<LocomotiveScroll | null>(null);
+    const { setClose, setOpen, setScroller } = useToggleSideBar();
+    const { pathname } = useLocation();
+
+
+
     useLayoutEffect(() => {
+
         const scroll = new LocomotiveScroll({
             smooth: true, el: (document.querySelector('#container') as HTMLElement),
+
             tablet: {
                 breakpoint: 0
-            }
+            },
         });
 
 
         setScrollRef(scroll);
-
+        setScroller(scroll);
 
         window.onresize = function () {
+            setOpen();
             scroll.update();
-            scroll.scrollTo('#scroll-top');
+
+            scroll.scrollTo('#container', { duration: 0.5, disableLerp: true });
+            setTimeout(() => {
+                setClose();
+            }, 1500);
         };
 
-        scroll.on("scroll", () => ScrollTrigger.update());
+        scroll.on("scroll", () => {
+
+
+            ScrollTrigger.update();
+        });
 
 
         ScrollTrigger.scrollerProxy('#container', {
@@ -46,6 +62,7 @@ const BaseLayout = () => {
 
         ScrollTrigger.defaults({
             scroller: document.querySelector('#container'),
+
         });
         const timeline = gsap.timeline({
             scrollTrigger: {
@@ -203,7 +220,7 @@ const BaseLayout = () => {
         };
 
     }
-        , []);
+        , [pathname]);
     const { open: navOpen, sideBar } = useToggleSideBar();
     useEffect(() => {
         scrollRef?.update();
@@ -219,7 +236,7 @@ const BaseLayout = () => {
     return (
 
         <Fragment>
-            <main id='container' className={classNames('', { 'h-[100dvh]': (navOpen || sideBar), 'min-h-[100dvh]': (!navOpen || !sideBar) })}>
+            <main id='container' className={classNames('p-0', { 'h-screen': (navOpen || sideBar), 'min-h-screen': (!navOpen || !sideBar) })}>
 
                 <Outlet />
             </main>
@@ -249,10 +266,16 @@ const BaseLayout = () => {
                 outerStyle={{
                     border: `3px solid var(--cursor-color)`
                 }} />
+
         </Fragment>
 
 
     );
 };
+
+
+
+
+
 
 export default BaseLayout;

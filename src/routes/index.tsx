@@ -6,6 +6,11 @@ import About from "../screens/About";
 import Transition from "../wrappers/Transition";
 import Navbar from "../components/Navbar";
 import Contact from "../screens/Contact";
+import Dashboard from "../screens/Dashboard";
+import AddServices from "../screens/AddServices";
+import AddRecentEvents from "../screens/AddRecentEvents";
+import DashBoardHome from "../screens/DashBoardHome";
+import AddEvents from "../screens/AddEvents";
 
 const router = createBrowserRouter([
   {
@@ -20,23 +25,44 @@ const router = createBrowserRouter([
         </Transition>
       },
       {
-        path: "/about",
+        path: "/dashboard",
         element:
-          <Transition key={'about'} item='about'>
-            <Navbar />
-            <About />
 
-          </Transition>
+          <Dashboard />
 
-      },
-      {
-        path: "/contact",
-        element:
-          <Transition key={'contact'} item='contact'>
-            <Navbar />
-            <Contact />
+        ,
+        children: [
+          {
+            path: "",
+            element:
+              <Transition key={'dashboard'} item='dashboard'>
+                <DashBoardHome />
 
-          </Transition>
+              </Transition>
+          },
+          {
+            path: "add-services",
+            element:
+              <Transition key={'add-services'} item='services'>
+                <AddServices />
+              </Transition>
+          },
+          {
+            path: "add-events",
+            element:
+              <Transition key={'add-events'} item='events'>
+                <AddEvents />
+              </Transition>
+          },
+          {
+            path: "add-recent-events",
+            element:
+              <Transition key={'add-recent-events'} item='recent'>
+                <AddRecentEvents />
+              </Transition>
+          }
+
+        ]
 
       }
     ],

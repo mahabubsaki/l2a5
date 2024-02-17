@@ -10,8 +10,8 @@ import useToggleSideBar from '../store/useToggleSideBar';
 import SideBar from './SideBar';
 
 const nav = [{ name: 'Home', path: '/' },
-{ name: 'About', path: '/about' },
-{ name: 'Contact', path: '/contact' },];
+{ name: 'Dashboard', path: '/dashboard' },
+{ name: 'Contact', path: '#contact' },];
 
 const navItems = [
     ...nav
@@ -21,6 +21,7 @@ export type NavPath = typeof navItems[number]['path'] | null;
 
 const Navbar = () => {
     const { pathname } = useLocation();
+    const { scroller } = useToggleSideBar();
     const [hovered, setHovered] = useState<NavPath>(null);
     const isSmallDevice = useMediaQuery("(max-width: 768px)");
     const { sideBar, setSideClose, setSideOpen } = useToggleSideBar();
@@ -43,13 +44,19 @@ const Navbar = () => {
                 {!isSmallDevice ? <motion.ul initial={{ scale: 0, opacity: 0, width: '0px' }} animate={{ scale: 1, opacity: 1, width: 'fit-content' }} exit={{ scale: 0, opacity: 0, width: '0px' }} className='flex gap-8 items-center'>
                     {navItems.map((item, index) => (
                         <Link to={item.path} key={item.name}>
+
                             <MagneticLink dark direction={'bottom'} pathname={pathname} path={item.path} hovered={hovered} setHovered={setHovered}>
-                                <li key={index} className='font-medium cursor-pointer select-none py-3 px-2'>
+                                <li onClick={() => {
+                                    if (item.name === 'Contact') {
+                                        scroller?.scrollTo('#contact');
+                                    }
+                                }} key={index} className='font-medium cursor-pointer select-none py-3 px-2'>
 
                                     {item.name}
 
                                 </li>
-                            </MagneticLink></Link>
+                            </MagneticLink>
+                        </Link>
                     ))}
                 </motion.ul> : null}
 
