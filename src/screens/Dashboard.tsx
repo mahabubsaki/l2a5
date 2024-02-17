@@ -33,11 +33,11 @@ const Dashboard = () => {
                             'bg-gray-600': !(pathname === link),
                         })}>{icon} {name}</div></Link>)}
                 </div>
-                <div className=' p-5 min-h-[100dvh] flex-1'>
+                <div className=' min-h-[100dvh] flex-1'>
                     <Outlet />
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -33,6 +33,7 @@ const AddServices = () => {
         handleSubmit,
         control,
         formState: { errors },
+        reset
     } = useForm<ServiceInputs>({
         defaultValues: {
             description: '',
@@ -53,6 +54,7 @@ const AddServices = () => {
             loading: 'Adding Service...',
             success: () => 'Added Service Successfully',
             error: (err) => err.message,
+            finally: () => reset()
 
         });
     };
