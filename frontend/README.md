@@ -2,7 +2,7 @@
 
 Welcome to the Event 360 repository! This website represent a event management web application.
 
-## Live link
+## Live link 
 
 [https://event-360-frontend-ten.vercel.app/](https://event-360-frontend-ten.vercel.app/)
 
